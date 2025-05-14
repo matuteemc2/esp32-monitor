@@ -4,14 +4,14 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+// Ruta que recibe los datos del ESP32
 app.post('/api/datos', (req, res) => {
-  const { device_id, temperatura, humedad } = req.body;
-  console.log(`Datos recibidos: ${device_id} - T: ${temperatura}, H: ${humedad}`);
-  res.send('Datos recibidos');
+  console.log("📦 Datos recibidos del ESP32:", req.body);
+  res.status(200).send('OK');
 });
 
 app.get('/', (req, res) => {
-  res.send('Servidor ESP32 online');
+  res.send('Servidor funcionando.');
 });
 
 app.listen(port, () => {
